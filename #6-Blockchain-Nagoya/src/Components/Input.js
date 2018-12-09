@@ -170,7 +170,7 @@ class InputPage extends Component {
       <Row className="center-align">
           <div className="col s8 offset-s2">
             <Col s={12}>
-              <h2>学生証</h2>
+              <h2>学生証発行</h2>
             </Col>
             <Col s={12}>
               <Input type="text" value={handlePassword} onChange={this.handlePassword} label="password" s={12} />
