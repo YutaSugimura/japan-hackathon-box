@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import {Row, Button, CardPanel} from 'react-materialize';
 import { client } from 'ontology-dapi';
+import QRCode from 'qrcode.react';
 
 import {
   Crypto, Account,
@@ -12,7 +13,7 @@ class UserTop extends Component {
     super(props);
     this.state = {
       address: '', account: null, contract: '',
-      type: 'student',did: '確認して下さい', res: ''
+      type: 'student',did: '確認して下さい', res: '', QR: ''
     }
   }
 
@@ -80,7 +81,7 @@ class UserTop extends Component {
     console.log("*******************" + res2)
 
 
-    this.setState({did: utils.hexstr2str(res), result: 'あなたは学生です'});
+    this.setState({did: utils.hexstr2str(res), result: 'あなたは学生です', QR: utils.hexstr2str(res)});
   }
 
   scInvoke = async(params, preExec) => {
@@ -108,6 +109,7 @@ class UserTop extends Component {
             <p>{this.state.address}</p>
             <p>{this.state.type}</p>
             <p>{this.state.did}</p>
+            <QRCode className="QR" value={this.state.QR} size={128} />
             <p>{this.state.result}</p>
             <Button onClick={this.GetInfoOf}>学生証を確認する</Button>
         </CardPanel>
