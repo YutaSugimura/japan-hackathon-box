@@ -12,7 +12,7 @@ class UserTop extends Component {
     super(props);
     this.state = {
       address: '', account: null, contract: '',
-      type: 'student',did: '確認して下さい',
+      type: 'student',did: '確認して下さい', res: ''
     }
   }
 
@@ -80,7 +80,7 @@ class UserTop extends Component {
     console.log("*******************" + res2)
 
 
-    this.setState({did: utils.hexstr2str(res)});
+    this.setState({did: utils.hexstr2str(res), result: 'あなたは学生です'});
   }
 
   scInvoke = async(params, preExec) => {
@@ -108,6 +108,7 @@ class UserTop extends Component {
             <p>{this.state.address}</p>
             <p>{this.state.type}</p>
             <p>{this.state.did}</p>
+            <p>{this.state.result}</p>
             <Button onClick={this.GetInfoOf}>学生証を確認する</Button>
         </CardPanel>
         
